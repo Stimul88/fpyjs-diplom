@@ -56,16 +56,29 @@ class ImageViewer {
     showLoadedBtn.addEventListener("click", () => {
       App.getModal("filePreviewer").open();
 
-
       Yandex.getUploadedFiles((json) => {
         App.getModal('filePreviewer').showImages(json);
       });
 
     })
 
+
     uploadBtn.addEventListener("click", () => {
       App.getModal('fileUploader').open();
+
+
+      const SelectTag = this.allImage.querySelectorAll('img')
+
+      const selectTagArray = []
+
+      for (let imgTag of SelectTag) {
+        if (imgTag.classList.contains('selected')) {
+          selectTagArray.push(imgTag)
+        }
+      }
+      App.getModal('fileUploader').showImages(selectTagArray);
     })
+
   }
 
   /**

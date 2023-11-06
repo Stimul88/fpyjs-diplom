@@ -56,7 +56,6 @@ class PreviewModal extends BaseModal {
     let imgUpload = [];
     if (data.items.length > 0) {
       for (let img of items ) {
-        console.log(img)
         imgUpload.push(this.getImageInfo(img))
       }
 

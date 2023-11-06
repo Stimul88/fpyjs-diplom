@@ -10,15 +10,9 @@ class Yandex {
    * Метод формирования и сохранения токена для Yandex API
    */
   static getToken() {
-    // localStorage.setItem('yaToken', '')
-    // console.log(createRequest)
-
-    // createRequest()
-
     const yaTokenLocal = localStorage.getItem('yaToken')
     if (yaTokenLocal === 'null' || yaTokenLocal === '') {
       let yaToken = prompt('Введите токен Яндекс API')
-      // if (yaToken)
       localStorage.setItem('yaToken', yaToken)
     }
   }
@@ -30,7 +24,7 @@ class Yandex {
     createRequest({
       method: "POST",
       url: "/resources/upload",
-      // data: { way: path, url: url },
+      data: { path: path, url: url },
       headers: {
         Authorization: `OAuth ${localStorage.getItem("yaToken")}`,
       },
@@ -59,7 +53,6 @@ class Yandex {
   static getUploadedFiles(callback){
     createRequest({
       method: "GET",
-      // url: "/resources/files?limit =1000&media_type=image",
       url: "/resources/files",
       data: { mediaType: "image", limit: 1000 },
       headers: {
